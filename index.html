@@ -2,41 +2,68 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Game Kata Tugas</title>
+<title>Game Kata Ganda</title>
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f8ff;
+  font-family: 'Comic Sans MS', Arial, sans-serif;
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
   text-align: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://i.imgur.com/7M2eP3g.png'); /* Contoh background kartun */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .game-box {
-  background: white;
-  width: 400px;
+  background: rgba(255, 255, 255, 0.9);
+  width: 450px;
   margin: 30px auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 button {
   width: 100%;
-  margin: 5px 0;
-  padding: 10px;
+  margin: 8px 0;
+  padding: 12px;
   font-size: 16px;
   border: none;
-  border-radius: 6px;
-  background: #4a90e2;
+  border-radius: 8px;
+  background: #ff6f61;
   color: white;
   cursor: pointer;
+  transition: 0.3s;
 }
-button:hover { background: #357abd; }
+button:hover { background: #ff3b2f; }
 .correct { background: #2ecc71 !important; }
 .wrong { background: #e74c3c !important; }
+
+h2, h3, p {
+  text-shadow: 1px 1px 2px #fff;
+}
+.obj {
+  text-align: left;
+  margin-bottom: 15px;
+  font-style: italic;
+  color: #333;
+}
 </style>
 </head>
 <body>
 
 <div class="game-box">
-<h2>Game Kata Tugas</h2>
+<h2>Game Kata Ganda</h2>
+
+<div class="obj">
+<p><strong>Objektif Pembelajaran:</strong></p>
+<ol>
+<li>Memahami kata ganda separa tunggal dan separa berimbuhan dalam pelbagai ayat.</li>
+<li>Menggunakan kata ganda separa tunggal dan separa berimbuhan dengan betul dalam ayat.</li>
+</ol>
+</div>
+
 <p id="question"></p>
 
 <button onclick="answer(0)" id="btn0"></button>
@@ -48,16 +75,25 @@ button:hover { background: #357abd; }
 
 <script>
 const questions = [
-  {q:"Pilih ayat yang menggunakan kata nafi dengan betul.", a:["Ali ialah tidak hadir ke sekolah hari ini.","Ali bukan hadir ke sekolah hari ini.","Ali tidak hadir ke sekolah hari ini."], c:2, f:"Betul! Ini kata nafi."},
-  {q:"Apakah fungsi kata pemeri dalam ayat “Cikgu Farah ialah guru Bahasa Melayu”?", a:["Menegaskan","Menghubungkan subjek dengan predikat","Menunjukkan masa"], c:1, f:"Betul! Kata pemeri menghubungkan subjek dan predikat."},
-  {q:"Pilih ayat yang menggunakan kata penegas dengan betul.", a:["Tolonglah kamu tutup pintu itu.","Tolong kamu tutup pintu itu lah.","Tolong kamu lah tutup pintu itu."], c:0, f:"Betul! Kata penegas '-lah' digunakan."},
-  {q:"Pilih ayat yang paling sesuai mengikut konteks.", a:["Kami sedang ke sekolah semalam.","Kami telah ke sekolah pagi tadi.","Kami akan ke sekolah kelmarin."], c:1, f:"Betul! Kata bantu 'telah' digunakan dengan betul."},
-  {q:"Lengkapkan ayat dengan kata arah: Buku itu diletakkan ___ meja.", a:["dari","atas","kepada"], c:1, f:"Betul! Kata arah 'atas' sesuai."},
-  {q:"Pilih ayat yang menggunakan kata bilangan dengan betul.", a:["Banyak murid itu sedang beratur.","Setiap murid itu sedang beratur.","Setiap murid sedang beratur."], c:2, f:"Betul! Kata bilangan 'Setiap' digunakan."},
-  {q:"Pilih ayat yang menggunakan kata penguat dengan betul.", a:["Rumah itu sungguh besar sekali.","Rumah itu sangat besar.","Rumah itu besar sangat sekali."], c:1, f:"Betul! Kata penguat 'sangat' digunakan."},
-  {q:"Apakah fungsi kata penekan dalam ayat 'Sesungguhnya kejayaan itu memerlukan usaha'?", a:["Memberi penegasan terhadap keseluruhan ayat","Menyatakan masa","Menunjukkan arah"], c:0, f:"Betul! Kata penekan menegaskan ayat."},
-  {q:"Pilih ayat yang mengandungi kata pembenda.", a:["Dia rajin belajar setiap hari.","Kejayaannya hasil usaha gigih.","Dia belajar dengan rajin."], c:1, f:"Betul! Kata pembenda '-nya' digunakan."},
-  {q:"Pilih ayat yang paling gramatis dan sesuai.", a:["Adik sedang telah membaca buku itu.","Adik akan membaca buku itu semalam.","Adik sedang membaca buku itu."], c:2, f:"Betul! Kata bantu 'sedang' digunakan dengan betul."}
+  {q:"Pilih ayat yang menggunakan kata ganda separa tunggal dengan betul.", 
+   a:["Budak itu comel-comel sahaja.","Budak itu comel-comelnya.","Budak itu sangat comel."], 
+   c:0, f:"Betul! 'comel-comel' adalah kata ganda separa tunggal."},
+
+  {q:"Pilih ayat yang menggunakan kata ganda separa berimbuhan dengan betul.", 
+   a:["Ali berlari-lari di taman.","Ali lari-lari di taman.","Ali sedang berlari."], 
+   c:0, f:"Betul! 'berlari-lari' adalah kata ganda separa berimbuhan."},
+
+  {q:"Lengkapkan ayat dengan kata ganda: 'Adik sedang ___ main di halaman.'", 
+   a:["lari-lari","bermain","main-main"], 
+   c:0, f:"Betul! Kata ganda 'lari-lari' sesuai."},
+
+  {q:"Pilih ayat yang paling sesuai:", 
+   a:["Ibu masak-memasak di dapur setiap pagi.","Ibu memasak setiap pagi.","Ibu masak di dapur."], 
+   c:0, f:"Betul! 'masak-memasak' adalah kata ganda separa berimbuhan."},
+
+  {q:"Pilih ayat yang menggunakan kata ganda separa tunggal dengan betul.", 
+   a:["Rumah itu besar-besar belaka.","Rumah itu besarnya besar.","Rumah itu sangat besar."], 
+   c:0, f:"Betul! 'besar-besar' adalah kata ganda separa tunggal."}
 ];
 
 let index = 0;
